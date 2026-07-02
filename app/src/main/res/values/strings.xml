@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">FlashPhoto</string>
+
+    <!-- NAV-BAR -->
+    <string name="nav_home">Home</string>
+    <string name="nav_library">Biblioteca</string>
+    <string name="nav_account">Conta</string>
+
+    <!-- LIB/BIBLIOTECA -->
+    <string name="library_empty">Nenhuma matéria ainda. Toque no + para começar.</string>
+    <string name="library_add_content_desc">Adicionar matéria</string>
+
+    <!-- MATÉRIA - ADICIONAR NOVA MAT. -->
+    <string name="dialog_new_subject_title">Nova matéria</string>
+    <string name="dialog_subject_name_label">Nome da matéria</string>
+    <string name="dialog_confirm">Adicionar</string>
+    <string name="dialog_cancel">Cancelar</string>
+
+    <!-- Placeholders -->
+    <string name="home_placeholder">Olá, babysharkzeiros - tela de home em breve</string>
+    <string name="account_placeholder">Tralelo Tralala - fazer conta</string>
+</resources>
