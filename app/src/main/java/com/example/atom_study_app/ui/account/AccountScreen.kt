@@ -66,7 +66,7 @@ fun HeaderSection(user: UserProfile) {
             ) {
                 Icon(
                     imageVector = Icons.Outlined.Person,
-                    contentDescription = "Foto de perfil",
+                    contentDescription = "Eu to cagado",
                     tint = Color(0xFF3A60D4),
                     modifier = Modifier.size(32.dp)
                 )
