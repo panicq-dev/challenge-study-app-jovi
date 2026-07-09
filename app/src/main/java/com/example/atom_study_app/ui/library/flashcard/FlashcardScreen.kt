@@ -1,6 +1,5 @@
-package com.example.atom_study_app.ui.library
+package com.example.atom_study_app.ui.library.flashcard
 
-import android.content.res.Configuration
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
@@ -19,23 +18,34 @@ import com.example.atom_study_app.ui.theme.AtomstudyappTheme
 import com.example.atom_study_app.ui.theme.BlueAccent
 import com.example.atom_study_app.ui.theme.RedAlert
 
-@Preview(name = "Modo Claro")
-@Preview(name = "Modo Escuro", uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Preview(showBackground = true)
 @Composable
 fun FlashScreenPreview() {
+
     AtomstudyappTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
         ) {
-            Flashcard()
+
+            FlashcardScreen(
+                state = FlashcardState(
+                    frontDescription = "",
+                    backDescription = ""
+                ),
+                onEvent = {}
+            )
+
         }
     }
 }
 
 @Composable
-fun Flashcard(modifier: Modifier = Modifier) {
-
+fun FlashcardScreen(
+    modifier: Modifier = Modifier,
+    state: FlashcardState,
+    onEvent: (FlashcardEvent) -> Unit
+) {
     var isFlipped by remember { mutableStateOf(false) }
 
     val cardRotation by animateFloatAsState(
@@ -44,8 +54,6 @@ fun Flashcard(modifier: Modifier = Modifier) {
         label = "cardFlipRotation"
     )
 
-    var frontText by remember { mutableStateOf("") }
-    var backText by remember { mutableStateOf("") }
     val maxChar = 250
 
     Column(
@@ -96,20 +104,21 @@ fun Flashcard(modifier: Modifier = Modifier) {
                     ) {
 
                         TextField(
-                            value = backText,
+                            value = state.backDescription,
                             onValueChange = { newText ->
                                 if (newText.length <= maxChar) {
-                                    backText = newText
+                                    onEvent(FlashcardEvent.SetBackDescription(newText))
                                 }
                             },
                             modifier = Modifier.fillMaxWidth(),
                             colors = TextFieldDefaults.colors(
+                                focusedTextColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                                unfocusedTextColor = MaterialTheme.colorScheme.onPrimaryContainer,
                                 focusedContainerColor = Color.Transparent,
                                 unfocusedContainerColor = Color.Transparent,
                                 focusedIndicatorColor = Color.Transparent,
                                 unfocusedIndicatorColor = Color.Transparent
-                            )
-                        )
+                        ))
                     }
 
                 } else {
@@ -122,14 +131,15 @@ fun Flashcard(modifier: Modifier = Modifier) {
                     ) {
 
                         TextField(
-                            value = frontText,
-                            onValueChange = { newText ->
-                                if (newText.length <= maxChar) {
-                                    frontText = newText
-                                }
+                            value = state.frontDescription,
+                            onValueChange = { newValue ->
+                                onEvent(FlashcardEvent.SetFrontDescription(newValue))
                             },
+
                             modifier = Modifier.fillMaxWidth(),
                             colors = TextFieldDefaults.colors(
+                                focusedTextColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                                unfocusedTextColor = MaterialTheme.colorScheme.onPrimaryContainer,
                                 focusedContainerColor = Color.Transparent,
                                 unfocusedContainerColor = Color.Transparent,
                                 focusedIndicatorColor = Color.Transparent,

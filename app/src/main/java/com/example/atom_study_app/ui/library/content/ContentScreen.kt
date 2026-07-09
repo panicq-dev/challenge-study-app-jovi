@@ -1,4 +1,4 @@
-package com.example.atom_study_app.ui.library
+package com.example.atom_study_app.ui.library.content
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.atom_study_app.ui.library.flashcard.AddFlashCard
 
 @Composable
 fun ContentScreen(

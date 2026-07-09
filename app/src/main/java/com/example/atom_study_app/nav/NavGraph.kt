@@ -11,7 +11,7 @@ import com.example.atom_study_app.ui.components.BottomNavBar
 
 import com.example.atom_study_app.ui.home.AccountScreen
 import com.example.atom_study_app.ui.home.HomeScreen
-import com.example.atom_study_app.ui.library.ContentScreen
+import com.example.atom_study_app.ui.library.content.ContentScreen
 import com.example.atom_study_app.ui.library.LibraryScreen
 
 // Babysharks, tomem cuidado ao mexer aqui. Aqui define alguns elementos fixos, como a Nav-Bar

@@ -1,4 +1,4 @@
-package com.example.atom_study_app.ui.library
+package com.example.atom_study_app.ui.library.flashcard
 
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.OutlinedTextField
