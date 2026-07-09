@@ -13,8 +13,14 @@
     <!-- MATÉRIA - ADICIONAR NOVA MAT. -->
     <string name="dialog_new_subject_title">Nova matéria</string>
     <string name="dialog_subject_name_label">Nome da matéria</string>
+    <!-- CONFIRMANDO DIALOGO. -->
     <string name="dialog_confirm">Adicionar</string>
     <string name="dialog_cancel">Cancelar</string>
+
+    <!-- MATÉRIA - ADICIONAR NOVO CONTEÚDO -->
+    <string name="dialog_new_content_title">Novo flashcard</string>
+    <string name="dialog_content_name_label">Adicione um novo flashcard.</string>
+
 
     <!-- Placeholders -->
     <string name="home_placeholder">Olá, babysharkzeiros - tela de home em breve</string>

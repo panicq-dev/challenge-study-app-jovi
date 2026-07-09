@@ -33,6 +33,7 @@ fun BottomNavBar(navController: NavController) {
                         Screen.Home -> Icons.Default.Home
                         Screen.Library -> Icons.Default.List
                         Screen.Account -> Icons.Default.AccountCircle
+                        else -> Icons.Default.List
                     }
                     Icon(icon, contentDescription = label)
                 },

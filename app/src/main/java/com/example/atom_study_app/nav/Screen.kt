@@ -8,4 +8,8 @@ sealed class Screen(val route: String, @StringRes val labelRes: Int) {
     object Home : Screen("home", R.string.nav_home)
     object Library : Screen("library", R.string.nav_library)
     object Account : Screen("account", R.string.nav_account)
+
+    object SubjectDetail : Screen("subject_detail/{subjectName}", R.string.nav_library)
+    fun createRoute(subjectName: String) = "subject_detail/$subjectName"
+
 }

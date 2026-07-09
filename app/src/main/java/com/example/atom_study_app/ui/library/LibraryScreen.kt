@@ -1,5 +1,6 @@
 package com.example.atom_study_app.ui.library
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -16,14 +17,15 @@ import com.example.atom_study_app.R
 
 @Composable
 fun LibraryScreen(
-    viewModel: LibraryViewModel = viewModel()
+    viewModel: LibraryViewModel = viewModel(),
+    onSubjectClick: (String) -> Unit
 ) {
     var showDialog by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
 
+
         if (viewModel.subjects.isEmpty()) {
-            // Estado vazio: nenhuma matéria cadastrada ainda
             Text(
                 text = stringResource(R.string.library_empty),
                 modifier = Modifier.align(Alignment.Center)
@@ -36,7 +38,11 @@ fun LibraryScreen(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(viewModel.subjects) { subject ->
-                    Card(modifier = Modifier.fillMaxWidth()) {
+                    Card(modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                        onSubjectClick(subject.name)
+                        }) {
                         Text(
                             text = subject.name,
                             modifier = Modifier.padding(16.dp),
@@ -53,7 +59,10 @@ fun LibraryScreen(
                 .align(Alignment.BottomEnd)
                 .padding(16.dp)
         ) {
-            Icon(Icons.Default.Add, contentDescription = stringResource(R.string.library_add_content_desc))
+            Icon(
+                Icons.Default.Add,
+                contentDescription = stringResource(R.string.library_add_content_desc)
+            )
         }
     }
 
