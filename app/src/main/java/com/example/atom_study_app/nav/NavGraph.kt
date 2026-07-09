@@ -9,7 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.atom_study_app.ui.components.BottomNavBar
 
-import com.example.atom_study_app.ui.home.AccountScreen
+import com.example.atom_study_app.ui.account.AccountScreen
 import com.example.atom_study_app.ui.home.HomeScreen
 import com.example.atom_study_app.ui.library.content.ContentScreen
 import com.example.atom_study_app.ui.library.LibraryScreen
