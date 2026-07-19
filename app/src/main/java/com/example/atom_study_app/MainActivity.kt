@@ -14,7 +14,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.room.Room
-import com.example.atom_study_app.data.database.FlashcardDatabase
+import com.example.atom_study_app.data.database.NoteZDatabase
+import com.example.atom_study_app.nav.AppNavGraph
 import com.example.atom_study_app.ui.library.flashcard.FlashcardScreen
 import com.example.atom_study_app.ui.library.flashcard.FlashcardViewModel
 import com.example.atom_study_app.ui.theme.AtomstudyappTheme
@@ -28,27 +29,29 @@ class MainActivity : ComponentActivity() {
                 val db = remember {
                     Room.databaseBuilder(
                         applicationContext,
-                        FlashcardDatabase::class.java,
+                        NoteZDatabase::class.java,
                         "atom_db"
-                    ).build()
+                    )
+                        .fallbackToDestructiveMigration(true)
+                        .build()
                 }
 
                 val viewModel: FlashcardViewModel = viewModel(
                     factory = object : ViewModelProvider.Factory {
                         @Suppress("UNCHECKED_CAST")
                         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                            return FlashcardViewModel(dao = db.dao) as T
+                            return FlashcardViewModel(dao = db.flashcardDao()) as T
                         }
                     }
                 )
 
                 val state by viewModel.state.collectAsState()
 
-//                AppNavGraph()
-                FlashcardScreen(
-                    state = state,
-                    onEvent = viewModel::onEvent
-                )
+                AppNavGraph(database = db)
+//                FlashcardScreen(
+//                    state = state,
+//                    onEvent = viewModel::onEvent
+//                )
             }
         }
     }

@@ -11,7 +11,7 @@ import com.example.atom_study_app.data.database.entity.SubjectEntity
 
 @Database(
     entities = [SubjectEntity::class, ContentEntity::class, FlashcardEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class NoteZDatabase : RoomDatabase() {
