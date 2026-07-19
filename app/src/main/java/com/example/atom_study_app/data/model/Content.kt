@@ -1,10 +1,12 @@
 package com.example.atom_study_app.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "contents")
 data class Content(
-    val id: Int,
-    val subject_id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val subjectName: String,
     val name: String,
-    var description: String,
-    val isCompleted: Boolean = false,
-    val timeStamp: Long = System.currentTimeMillis()
+    val createdAt: Long = System.currentTimeMillis()
 )

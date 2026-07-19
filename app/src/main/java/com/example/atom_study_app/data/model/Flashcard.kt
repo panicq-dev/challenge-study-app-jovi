@@ -6,6 +6,10 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "flashcards")
 data class Flashcard(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val subjectName: String,
     val frontDescription: String,
     val backDescription: String,
+    val correctCount: Int = 0,
+    val wrongCount: Int = 0,
+    val lastReviewed: Long = 0L
 )

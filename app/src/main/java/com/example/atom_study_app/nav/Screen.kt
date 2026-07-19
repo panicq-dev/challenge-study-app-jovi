@@ -9,7 +9,7 @@ sealed class Screen(val route: String, @StringRes val labelRes: Int) {
     object Library : Screen("library", R.string.nav_library)
     object Account : Screen("account", R.string.nav_account)
 
-    object SubjectDetail : Screen("subject_detail/{subjectName}", R.string.nav_library)
-    fun createRoute(subjectName: String) = "subject_detail/$subjectName"
+    object SubjectDetail : Screen("subject_detail/{subjectName}/{contentName}", R.string.nav_library)
+    fun createRoute(subjectName: String, contentName: String) = "subject_detail/$subjectName/$contentName"
 
 }

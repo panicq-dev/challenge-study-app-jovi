@@ -11,16 +11,22 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.atom_study_app.nav.Screen
 
+import androidx.compose.ui.graphics.Color
+
 @Composable
 fun BottomNavBar(navController: NavController) {
     val items = listOf(Screen.Home, Screen.Library, Screen.Account)
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
 
-    NavigationBar {
+    NavigationBar(
+        containerColor = MaterialTheme.colorScheme.primary,
+        contentColor = Color.White
+    ) {
         items.forEach { screen ->
             val label = stringResource(screen.labelRes)
+            val selected = currentRoute == screen.route
             NavigationBarItem(
-                selected = currentRoute == screen.route,
+                selected = selected,
                 onClick = {
                     navController.navigate(screen.route) {
                         popUpTo(navController.graph.startDestinationId) { saveState = true }
@@ -35,9 +41,25 @@ fun BottomNavBar(navController: NavController) {
                         Screen.Account -> Icons.Default.AccountCircle
                         else -> Icons.Default.List
                     }
-                    Icon(icon, contentDescription = label)
+                    Icon(
+                        icon, 
+                        contentDescription = label,
+                        tint = if (selected) Color.White else Color.White.copy(alpha = 0.6f)
+                    )
                 },
-                label = { Text(label) }
+                label = { 
+                    Text(
+                        label,
+                        color = if (selected) Color.White else Color.White.copy(alpha = 0.6f)
+                    ) 
+                },
+                colors = NavigationBarItemDefaults.colors(
+                    indicatorColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.5f),
+                    selectedIconColor = Color.White,
+                    unselectedIconColor = Color.White.copy(alpha = 0.6f),
+                    selectedTextColor = Color.White,
+                    unselectedTextColor = Color.White.copy(alpha = 0.6f)
+                )
             )
         }
     }

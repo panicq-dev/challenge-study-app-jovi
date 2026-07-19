@@ -9,10 +9,10 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FlashcardDao {
-    @Upsert // Insert e Update
+    @Upsert
     suspend fun upsertFlashcard(flashcard: Flashcard)
     @Delete
     suspend fun deleteFlashcard(flashcard: Flashcard)
-    @Query("SELECT * FROM flashcards")
-    fun getAllFlashcards(): Flow<List<Flashcard>>
+    @Query("SELECT * FROM flashcards WHERE subjectName = :subjectName")
+    fun getFlashcardsBySubject(subjectName: String): Flow<List<Flashcard>>
 }

@@ -7,12 +7,24 @@ import androidx.room.RoomDatabase
 import com.example.atom_study_app.data.dao.FlashcardDao
 import com.example.atom_study_app.data.model.Flashcard
 
+import com.example.atom_study_app.data.dao.SubjectDao
+import com.example.atom_study_app.data.model.Subject
+
+import com.example.atom_study_app.data.dao.ContentDao
+import com.example.atom_study_app.data.model.Content
+
+import com.example.atom_study_app.data.dao.StatsDao
+import com.example.atom_study_app.data.model.StudyStats
+
 @Database(
-    entities = [Flashcard::class],
-    version = 1
+    entities = [Flashcard::class, Subject::class, Content::class, StudyStats::class],
+    version = 6
 )
 abstract class FlashcardDatabase : RoomDatabase() {
     abstract val dao: FlashcardDao
+    abstract val subjectDao: SubjectDao
+    abstract val contentDao: ContentDao
+    abstract val statsDao: StatsDao
 
     companion object {
         @Volatile

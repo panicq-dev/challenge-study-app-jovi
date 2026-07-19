@@ -8,7 +8,8 @@ sealed interface FlashcardEvent { // Cada ação do usuário, é um evento. Even
     data class SetBackDescription(val value: String) : FlashcardEvent
 
 
-    object SaveFlashcard : FlashcardEvent
+    data class SaveFlashcard(val subjectName: String) : FlashcardEvent
 
     data class DeleteFlashcard(val flashcard: Flashcard) : FlashcardEvent
+    data class UpdateScore(val flashcard: Flashcard, val isCorrect: Boolean) : FlashcardEvent
 }
