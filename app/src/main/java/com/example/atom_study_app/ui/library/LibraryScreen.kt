@@ -17,15 +17,16 @@ import com.example.atom_study_app.R
 
 @Composable
 fun LibraryScreen(
-    viewModel: LibraryViewModel = viewModel(),
+    viewModel: LibraryViewModel,
     onSubjectClick: (String) -> Unit
 ) {
+    val subjects by viewModel.subjects.collectAsState()
     var showDialog by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
 
 
-        if (viewModel.subjects.isEmpty()) {
+        if (subjects.isEmpty()) {
             Text(
                 text = stringResource(R.string.library_empty),
                 modifier = Modifier.align(Alignment.Center)
@@ -37,7 +38,7 @@ fun LibraryScreen(
                     .padding(16.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                items(viewModel.subjects) { subject ->
+                items(subjects) { subject ->
                     Card(modifier = Modifier
                         .fillMaxWidth()
                         .clickable {
